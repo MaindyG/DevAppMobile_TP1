@@ -8,6 +8,7 @@ import DetailsScreen from "../screens/DetailsScreen";
 import CounterScreen from "../screens/CounterScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import ScrollImages from "../screens/ContactScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,6 +20,7 @@ function Tabs() {
             <Tab.Screen name="Counter" component={CounterScreen} options={{title: 'Compteur'}}/>
             <Tab.Screen name="Settings" component={SettingsScreen} options={{title: 'Paramètre'}}/>
             <Tab.Screen name="Info-Person" component={ScrollImages} options={{title: "Liste d'élèves"}}/>
+            <Tab.Screen name="Profil" component={ProfileScreen} options={{title: "Profil élève"}}/>
         </Tab.Navigator>
     );
 

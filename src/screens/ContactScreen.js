@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FlatList, View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from 'react-native';
 import { addUserToList } from "../hooks/addUser";
 
-export default function ScrollImages() {
+export default function ContactScreen() {
     let id = 0;
 
     const {users, addUser} = addUserToList([
