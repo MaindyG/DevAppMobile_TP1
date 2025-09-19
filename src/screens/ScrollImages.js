@@ -1,14 +1,29 @@
-import React from "react";
-import { FlatList, View, Text, StyleSheet, Image } from 'react-native';
+import React, { useState } from "react";
+import { FlatList, View, Text, StyleSheet, Image, TextInput, Button } from 'react-native';
+import { addUserToList } from "../hooks/addUser";
 
 export default function ScrollImages() {
     let id = 0;
 
-    const personsInfo = [
-        { id: id++, image: require('../images/image1.jpg'), name: 'Alice' },
-        { id: id++, image: require('../images/image2.jpg'), name: 'John' },
-        { id: id++, image: require('../images/image3.jpg'), name: 'Alex' }
-    ];
+    const {users, addUser} = addUserToList([
+        { id: id++, image: require('../assets/images/image1.jpg'), name: 'Alice' },
+        { id: id++, image: require('../assets/images/image2.jpg'), name: 'John' },
+        { id: id++, image: require('../assets/images/image3.jpg'), name: 'Alex' }
+    ]);
+
+    //Initialisation du state pour le TextInput
+    const [name, setName] = useState('');
+
+    //Fonction pour ajouter un utilisateur
+    const add = () => {
+        if (name.trim()) {
+            addUser({
+                name: name.trim(),
+                image: require('../assets/images/image4.jpg')
+            });
+            setName('');
+        }
+    };
 
     const renderItem = ({ item }) => (
         <View style={styles.item}>
@@ -21,11 +36,27 @@ export default function ScrollImages() {
     );
 
     return (
-        <FlatList
-            data={personsInfo}
-            renderItem={renderItem}
-            keyExtractor={item => item.id.toString()}
-        />
+        <>
+            <View>
+                <TextInput
+                    placeholder="Name"
+                    value={name}
+                    onChangeText={name => setName(name)}
+                    style={styles.input}
+                />
+                
+                <Button
+                    title="Ajouter User"
+                    onPress={add}
+                />
+            </View>
+
+            <FlatList
+                data={users}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+            />
+        </>
     );
 };
 
@@ -36,6 +67,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#f9c2ff',
         flexDirection: 'row',
         alignItems: 'center',
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#f9c2ff',
+        padding: 20,
+        borderRadius: 8,
     },
     image: {
         width: 50,
