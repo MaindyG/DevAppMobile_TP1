@@ -1,6 +1,6 @@
 import { FlatList, View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import defaultProfile from "../assets/images/defaultPic.png";
+import defaultProfile from "../assets/images/image4.jpg";
 
 export default function ProfileScreen() {
 

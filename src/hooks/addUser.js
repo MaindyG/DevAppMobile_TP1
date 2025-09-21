@@ -5,5 +5,14 @@ export function addUserToList(initial = []) {
 
     const addUser = useCallback((newUser) => setUsers(c => [...c,{...newUser}]), []);
 
-    return { users, addUser };
+     const updateUser = useCallback(
+        (updatedUser) => {
+            setUsers(prevUsers =>
+                prevUsers.map(user => (user.id === updatedUser.id ? updatedUser : user))
+            );
+        },
+        []
+    );
+
+    return { users, addUser, updateUser };
 }
