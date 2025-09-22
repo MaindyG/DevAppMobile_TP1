@@ -1,26 +1,23 @@
-import React, { useContext } from 'react';
-
-import { View, Text, Switch, StyleSheet } from 'react-native';
-
-import { ThemeContext } from '../context/ThemeContext';
+import React from 'react';
+import Toggle from 'react-native-toggle-input'
+import { View, Text, StyleSheet } from 'react-native';
+import { goodOrientation } from '../hooks/orientation';
+import { lockOrientationToPortrait } from '../hooks/orientation';
 
 export default function SettingsScreen() {
-    const { theme, toggleTheme } = useContext(ThemeContext);
+    const [toggle, setToggle] = React.useState(false)
 
     return(
-        <View style={[styles.container, theme === 'dark' ? styles.dark : styles.light]}>
-            <Text style={styles.title}></Text>
-            <View>
-                <Text>Mode Sombre</Text>
-                <Switch value={theme === 'dark'} onValueChange={toggleTheme}/>
+   
+            <View style={styles.row}>
+                <Text>Bloquer l'orientation en mode Portrait</Text>
+                <Toggle on={lockOrientationToPortrait} off={goodOrientation} toggle={toggle} setToggle={setToggle} />
             </View>
-        </View>
+ 
+        
     )
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 16 }, 
-    row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }, 
-    light: { backgroundColor: '#ffffff' },
-    dark: { backgroundColor: '#111111' }, 
+    row: { flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }
 })
