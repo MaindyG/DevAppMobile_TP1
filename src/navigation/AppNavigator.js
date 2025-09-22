@@ -13,6 +13,7 @@ import LoginScreen from "../screens/LoginScreen";
 import { UsersContext } from "../context/UsersContext";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import RegisterScreen from "../screens/RegisterScreen";
+import ProfilScreen from "../screens/ProfilScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,6 +25,7 @@ function Tabs() {
             <Tab.Screen name="Counter" component={CounterScreen} options={{title: 'Compteur'}}/>
             <Tab.Screen name="Settings" component={SettingsScreen} options={{title: 'Paramètre'}}/>
             <Tab.Screen name="Info-Person" component={ScrollImages} options={{title: "Liste d'élèves"}}/>
+            <Tab.Screen name="Profil" component={ProfilScreen} options={{title: 'Page profil'}}/>
         </Tab.Navigator>
     );
 
