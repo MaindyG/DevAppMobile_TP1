@@ -1,0 +1,67 @@
+
+networks:
+  app_network:
+    driver: bridge
+
+services:
+  development:
+    build:
+      context: ${DEVELOPMENT_ENVIRONNMENT} # where dockerfile is or github link
+      target: development
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "${DEV_PORT_METRO_BUNDLER}:19000" # Main port for the Metro Bundler
+      - "${DEV_PORT_WEBSOCKET}:19001"     # WebSocket for debugging
+      - "${DEV_PORT_MANIFEST}:19002"      # Manifest port
+      - "${DEV_PORT_TUNNEL}:19003"
+      - "${DEV_PORT_DEVTOOLS}:19006"      # Expo DevTools
+      - "${DEV_PORT_METRO}:8081"          # React Native development port
+      - 5037:5037
+      - 5054-5056:5054-5056
+    environment:
+      REACT_NATIVE_PACKAGER_HOSTNAME: ${REACT_NATIVE_PACKAGER_HOSTNAME}
+      EXPO_DEVTOOLS_LISTEN_ADDRESS: ${EXPO_DEVTOOLS_LISTEN_ADDRESS}
+      ANDROID_ADB_SERVER_ADDRESS : ${ANDROID_ADB_SERVER_ADDRESS} #Adb schenanigans
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"  #Adb schenanigans
+    volumes:
+      # - ./package-lock.json:/usr/src/app/package-lock.json                  # Mount the current directory
+      # - ./package.json:/usr/src/app/package.json                  # Mount the current directory
+      # - ./.expo:/usr/src/app/.expo
+      # - ./node_modules:/usr/src/app/node_modules
+      - /usr/src/app/node_modules          # Persist node_modules
+      - ${DEVELOPMENT_ENVIRONNMENT}/tests:/usr/src/app/tests         # Mount the tests directory
+    develop:
+      watch:
+        - action: sync
+          path: ${DEVELOPMENT_ENVIRONNMENT}
+          target: /usr/src/app/
+        - action: rebuild
+          path: ${DEVELOPMENT_ENVIRONNMENT}/package.json
+    stdin_open: true                       # Keep stdin open for interactive processes
+    tty: true                              # Allocate a pseudo-TTY
+    networks:
+      - app_network
+
+  # test:
+  #   build:
+  #     context: .
+  #     target: test
+  #   command: ["npm", "run", "test"]        # Run the test command
+  #   networks:
+  #     - app_network
+
+  # production:
+  #   build:
+  #     context: .
+  #     target: production
+  #   ports:
+  #     - "${PROD_PORT}:3000"                # Main port for the production app
+  #   environment:
+  #     NODE_ENV: ${NODE_ENV}                # Environment variable for Node.js
+  #     API_KEY: ${API_KEY}                  # API key for the app
+  #     SECRET_KEY: ${SECRET_KEY}            # Secret key for the app
+  #   stdin_open: true                       # Keep stdin open for interactive processes
+  #   tty: true                              # Allocate a pseudo-TTY
+  #   networks:
+  #     - app_network
