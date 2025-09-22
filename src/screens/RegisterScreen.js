@@ -2,22 +2,28 @@ import React, { use, useContext, useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native'; 
 import { UsersContext } from "../context/UsersContext";
 import { CurrentUserContext } from "../context/CurrentUserContext";
-
+import User from "../template/user.json"
 export default function RegisterScreen({navigation}) {
     const {users, addAUser} = useContext(UsersContext);
     const {user} = useContext(CurrentUserContext);
-    const [userName, setUserName] = useState();
-    const [password, setPassword] = useState();
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
 
 
     const onSubmit = () => {
+        console.log(users)
         let validUsername = userName != "" && !users.has(userName)
         if (!validUsername){
             return
         }
         if (password != ""){
-            addAUser(userName,password)
-            console.log(users)
+            let newUserCredentials = {...User}
+            newUserCredentials.password = password
+            newUserCredentials.profilePicturePath = require('../assets/images/image4.jpg')
+            newUserCredentials.name = userName
+
+
+            addAUser(userName,newUserCredentials)
             navigation.navigate('Login')
 
 

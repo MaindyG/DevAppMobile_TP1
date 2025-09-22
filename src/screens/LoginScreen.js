@@ -11,7 +11,7 @@ export default function LoginScreen({navigation}) {
 
 
     const onSubmit = () => {
-        ((users.has(userName)) && (users.get(userName) == password)) ? setCurrentUser(userName,password) : null;      
+        ((users.has(userName)) && (users.get(userName).password == password)) ? setCurrentUser(userName) : null;      
         console.log(user);
     }
 
