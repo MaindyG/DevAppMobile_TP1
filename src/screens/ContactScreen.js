@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, View, Text, StyleSheet, Image, TextInput, Button } from 'react-native';
+import { FlatList, View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from 'react-native';
 import { addUserToList } from "../hooks/addUser";
 
 export default function ScrollImages() {
@@ -39,16 +39,16 @@ export default function ScrollImages() {
         <>
             <View>
                 <TextInput
-                    placeholder="Name"
+                    placeholder="Nom"
                     value={name}
                     onChangeText={name => setName(name)}
                     style={styles.input}
                 />
-                
-                <Button
-                    title="Ajouter User"
-                    onPress={add}
-                />
+
+                <TouchableOpacity onPress={add} style={styles.button}>
+                    <Text style={{ color: 'white', textAlign: 'center', fontWeight: "bold", fontSize: 20 }}>Ajouter Élève</Text>
+                </TouchableOpacity>
+
             </View>
 
             <FlatList
@@ -79,4 +79,10 @@ const styles = StyleSheet.create({
         height: 50,
         marginRight: 10,
     },
+    button: {
+        margin: 10,
+        backgroundColor: '#841584',
+        padding: 10,
+        borderRadius: 5,
+    }
 });
