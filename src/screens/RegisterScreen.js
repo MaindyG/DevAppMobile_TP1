@@ -1,5 +1,5 @@
 import React, { use, useContext, useState } from "react";
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native'; 
+import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity } from 'react-native'; 
 import { UsersContext } from "../context/UsersContext";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import User from "../template/user.json"
@@ -44,13 +44,18 @@ export default function RegisterScreen({navigation}) {
             onChangeText={setPassword}
             value={password}
             />
-            <Button title="Envoyer"
-            onPress={onSubmit}
-            />
+            <TouchableOpacity style={styles.btn}>
+                <Button title="Envoyer"
+                onPress={onSubmit}
+                />
+            </TouchableOpacity>
 
-            <Button title="Page d'authentification"
-            onPress={() => navigation.navigate('Login')}
-            />
+            <TouchableOpacity style={styles.btn1}>
+                <Button title="Page d'authentification"
+                onPress={() => navigation.navigate('Login')}
+                />    
+            </TouchableOpacity>
+
         </View>
     )
 }
@@ -59,5 +64,7 @@ export default function RegisterScreen({navigation}) {
         container: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 16 }, 
         title: { fontSize: 22, fontWeight: '600', marginBottom: 8 }, 
           input: {height: 40, minWidth: 200, margin: 12, borderWidth: 1, padding: 10, },
+          btn: {backgroundColor: "pink", color: "white", borderRadius: 50, marginTop: 50, padding: 10, width: 200}, 
+        btn1: {borderRadius: 50, marginTop: 50, padding: 10, backgroundColor: "#FFB6C1", width: 200}
 
 }); 

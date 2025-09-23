@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { FlatList, View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from 'react-native';
 import { UsersContext } from "../context/UsersContext";
 
-export default function ScrollImages() {
+export default function ContactScreen() {
     const {users} = useContext(UsersContext);
     const [name, setName] = useState('');
     const renderItem = ({ item }) => (
