@@ -10,7 +10,7 @@ export default function App() {
     <ThemeProvider>
       <UsersProvider>
         <CurrentUserProvider>
-      <AppNavigator />
+        <AppNavigator />
       </CurrentUserProvider>
       </UsersProvider>
     </ThemeProvider>
