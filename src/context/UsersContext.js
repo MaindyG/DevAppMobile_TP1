@@ -1,9 +1,9 @@
 import React, { createContext, useState, useMemo, useCallback } from "react";
-
-export const UsersContext = createContext({ users: new Map, addAUser: () => {}});
+import { TestData } from "../testdata/testdata";
+export const UsersContext = createContext({ users: new Map(), addAUser: () => {}});
 
 export function UsersProvider({ children }){
-    const [users, addUser] = useState((new Map));
+    const [users, addUser] = useState((new Map(Object.entries(TestData))));
     
     const addAUser = useCallback((key,value) => {
         addUser(prev => {prev.set(key,value)

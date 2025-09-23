@@ -24,7 +24,7 @@ function Tabs() {
             <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Accueil'}}/>
             <Tab.Screen name="Counter" component={CounterScreen} options={{title: 'Compteur'}}/>
             <Tab.Screen name="Settings" component={SettingsScreen} options={{title: 'Paramètre'}}/>
-            <Tab.Screen name="Info-Person" component={ScrollImages} options={{title: "Liste d'élèves"}}/>
+            <Tab.Screen name="Info-Person" component={ScrollImages} options={{title: "Liste De Contacts"}}/>
             <Tab.Screen name="Profil" component={ProfilScreen} options={{title: 'Page profil'}}/>
         </Tab.Navigator>
     );
