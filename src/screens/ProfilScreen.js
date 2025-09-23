@@ -1,18 +1,18 @@
 import { FlatList, View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import defaultProfile from "../assets/images/image4.jpg";
 import { useContext } from 'react';
 import { CurrentUserContext } from '../context/CurrentUserContext';
+import { UsersContext } from '../context/UsersContext';
 
 export default function ProfilScreen() {
 
-
+    const {users} = useContext(UsersContext)
     const { user: currentUser } = useContext(CurrentUserContext);
     const displayName = currentUser ?? 'Utilisateur inconnu'
 
     return (
         <View style={styles.container}>
-            <Image style={styles.profil} source={defaultProfile}/>
+            <Image style={styles.profil} source={users.get(currentUser).profilePicturePath}/>
             <Text style={styles.title}>{displayName}</Text>
         </View>
     )
