@@ -44,16 +44,12 @@ export default function RegisterScreen({navigation}) {
             onChangeText={setPassword}
             value={password}
             />
-            <TouchableOpacity style={styles.btn}>
-                <Button title="Envoyer"
-                onPress={onSubmit}
-                />
+            <TouchableOpacity style={styles.btn} onPress={onSubmit}>
+                <Text style={styles.text}>Envoyer</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btn1}>
-                <Button title="Page d'authentification"
-                onPress={() => navigation.navigate('Login')}
-                />    
+            <TouchableOpacity style={styles.btn1} onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.text}>Page d'authentification</Text>  
             </TouchableOpacity>
 
         </View>
@@ -64,7 +60,26 @@ export default function RegisterScreen({navigation}) {
         container: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 16 }, 
         title: { fontSize: 22, fontWeight: '600', marginBottom: 8 }, 
           input: {height: 40, minWidth: 200, margin: 12, borderWidth: 1, padding: 10, },
-          btn: {backgroundColor: "pink", color: "white", borderRadius: 50, marginTop: 50, padding: 10, width: 200}, 
-        btn1: {borderRadius: 50, marginTop: 50, padding: 10, backgroundColor: "#FFB6C1", width: 200}
+            btn: {
+    backgroundColor: "pink",
+    color: "white",
+    borderRadius: 50,
+    marginTop: 50,
+    padding: 10,
+    width: 200,
+    height: 50
+  },
+  btn1: {
+    borderRadius: 50,
+    marginTop: 50,
+    padding: 10,
+    backgroundColor: "#FFB6C1",
+    width: 200,
+    height: 50
+  },
+  text: {
+    textAlign: "center",
+    marginTop: 5
+  }
 
 }); 
