@@ -1,34 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FlatList, View, Text, StyleSheet, Image, TextInput, Button, TouchableOpacity } from 'react-native';
-import { addUserToList } from "../hooks/addUser";
+import { UsersContext } from "../context/UsersContext";
 
-export default function ScrollImages() {
-    let id = 0;
-
-    const {users, addUser} = addUserToList([
-        { id: id++, image: require('../assets/images/image1.jpg'), name: 'Alice' },
-        { id: id++, image: require('../assets/images/image2.jpg'), name: 'John' },
-        { id: id++, image: require('../assets/images/image3.jpg'), name: 'Alex' }
-    ]);
-
-    //Initialisation du state pour le TextInput
+export default function ContactScreen() {
+    const {users} = useContext(UsersContext);
     const [name, setName] = useState('');
-
-    //Fonction pour ajouter un utilisateur
-    const add = () => {
-        if (name.trim()) {
-            addUser({
-                name: name.trim(),
-                image: require('../assets/images/image4.jpg')
-            });
-            setName('');
-        }
-    };
-
     const renderItem = ({ item }) => (
         <View style={styles.item}>
             <Image
-                source={item.image}
+                source={item.profilePicturePath}
                 style={styles.image}
             />
             <Text>{item.name}</Text>
@@ -45,16 +25,12 @@ export default function ScrollImages() {
                     style={styles.input}
                 />
 
-                <TouchableOpacity onPress={add} style={styles.button}>
-                    <Text style={{ color: 'white', textAlign: 'center', fontWeight: "bold", fontSize: 20 }}>Ajouter Élève</Text>
-                </TouchableOpacity>
-
             </View>
 
             <FlatList
-                data={users}
+                data={Array.from(users.values()).filter(e => e.name.startsWith(name))}
                 renderItem={renderItem}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.name}
             />
         </>
     );
