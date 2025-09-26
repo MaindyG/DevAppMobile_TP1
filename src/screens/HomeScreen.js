@@ -8,12 +8,12 @@ export default function HomeScreen({ navigation }) {
     return(
         <View style={styles.container}>
             <Text style={styles.title}>Bonjour {user} !</Text>
-            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Details')}>
-                <Text style={styles.text}>Aller aux Détails</Text>
+            <TouchableOpacity style={styles.btn}>
+                <Button onPress={() => navigation.navigate('Details')} title="Aller aux Détails"/>
             </TouchableOpacity>
             <View style={{ height: 12 }}/>
-            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Counter')}>
-                <Text style={styles.text}>Voir le Compteur</Text>
+            <TouchableOpacity style={styles.btn}>
+                <Button title="Voir le Compteur" onPress={() => navigation.navigate('Counter')}/>
             </TouchableOpacity>
         </View>
     )
@@ -22,25 +22,5 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: { flex: 1, alignItems: 'center', justifyContent: 'center'},
     title: {fontSize: 22, fontWeight: 600},
-                btn: {
-    backgroundColor: "pink",
-    color: "white",
-    borderRadius: 50,
-    marginTop: 50,
-    padding: 10,
-    width: 200,
-    height: 50
-  },
-  btn1: {
-    borderRadius: 50,
-    marginTop: 50,
-    padding: 10,
-    backgroundColor: "#FFB6C1",
-    width: 200,
-    height: 50
-  },
-  text: {
-    textAlign: "center",
-    marginTop: 5
-  }
+    btn: {backgroundColor: "pink", color: "white", borderRadius: 50, marginTop: 50, padding: 10}
 })
