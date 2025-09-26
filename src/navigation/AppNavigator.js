@@ -14,6 +14,7 @@ import { UsersContext } from "../context/UsersContext";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import RegisterScreen from "../screens/RegisterScreen";
 import ProfilScreen from "../screens/ProfilScreen";
+import ProfilDetailsScreen from "../screens/ProfilDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -65,7 +66,8 @@ export default function AppNavigator(){
             <Stack.Navigator>
                 <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false}}/>
                 <Stack.Screen name="Details" component={DetailsScreen}/>
-                
+                <Stack.Screen name="ProfilDetails" component={ProfilDetailsScreen} /> 
+
             </Stack.Navigator>
             }
 
