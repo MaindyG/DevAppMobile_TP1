@@ -28,7 +28,7 @@ export default function ContactScreen() {
             </View>
 
             <FlatList
-                data={Array.from(users.values()).filter(e => e.name.startsWith(name))}
+                data={Array.from(users.values()).filter(e => e.name.startsWith(name.toLowerCase()))}
                 renderItem={renderItem}
                 keyExtractor={item => item.name}
             />
