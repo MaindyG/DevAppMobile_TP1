@@ -9,6 +9,7 @@ export async function changeScreenOrientation(lockOrientation) {
     }
     else {
         console.log("lockOrientation");
+        await ScreenOrientation.unlockAsync();
         await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
     }
 }
