@@ -25,28 +25,41 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Page D'Authentification</Text>
       <Text style={styles.title}>Nom D'utilisateur</Text>
       <TextInput
         style={styles.input}
+        placeholder=""
         onChangeText={setUserName}
         value={userName}
       />
       <Text style={styles.title}>Mot de passe</Text>
       <TextInput
         style={styles.input}
+        secureTextEntry={true}
         onChangeText={setPassword}
         value={password}
       />
+
+
       <TouchableOpacity style={styles.btn} onPress={onSubmit}>
         <Text style={styles.text}>Envoyer</Text>
       </TouchableOpacity>
-      <TouchableOpacity
+
+
+      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+        <Text style={styles.signUp}>
+          Êtes-vous nouveau ? <Text style={styles.signUpLink}>Inscrivez-vous !</Text>
+        </Text>
+      </TouchableOpacity>
+
+
+
+      {/* <TouchableOpacity
         style={styles.btn1}
         onPress={() => navigation.navigate("Register")}
       >
         <Text style={styles.text}>Page d'inscription</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
@@ -57,14 +70,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 16,
+    backgroundColor: "#dda4a4ff"
   },
-  title: { fontSize: 22, fontWeight: "600", marginBottom: 8 },
-  input: { height: 40, minWidth: 200, margin: 12, borderWidth: 1, padding: 10 },
+  signup: {
+    color: '#fff',
+    fontSize:40,
+  },
+  signUpLink: {
+    textDecorationLine: "underline",
+    color: '#007efbff',
+    
+  },
+  title: { fontSize: 22, fontWeight: "600", marginBottom: 8, color: "#fff" },
+  input: { height: 40, minWidth: 200, margin: 12, borderWidth: 1, padding: 10, borderColor: "#fff", color: "#fff" },
   btn: {
-    backgroundColor: "pink",
+    backgroundColor: "#dc6375ff",
     color: "white",
     borderRadius: 50,
-    marginTop: 50,
+    marginTop: 40,
+    marginBottom:30,
     padding: 10,
     width: 200,
     height: 50
@@ -73,12 +97,14 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginTop: 50,
     padding: 10,
-    backgroundColor: "#FFB6C1",
+    backgroundColor: "#dc6375ff",
     width: 200,
     height: 50
   },
   text: {
     textAlign: "center",
-    marginTop: 5
+    marginTop: 5,
+    fontSize: 17,
+    color: "#fff"
   }
 });

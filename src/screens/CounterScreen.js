@@ -9,20 +9,27 @@ export default function CounterScreen() {
         <View style={styles.container}>
             <Text style={styles.value}>Compteur: {count}</Text>
             <View style={styles.row}>
-                <Button title="+1" onPress={increment}/>
-                <View style={{ width: 12}}/>
-                <Button title="-1" onPress={decrement}/>
-                <View style={{ width: 12}}/>
-                <Button  title="Reset" onPress={reset}/>
+                <Button title="+1" onPress={increment} />
+                <View style={{ width: 12 }} />
+                <Button title="-1" onPress={decrement} />
+                <View style={{ width: 12 }} />
+                <Button title="Reset" onPress={reset} />
             </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+    container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
 
-    value : { fontSize: 22, marginBottom: 16},
+    value: { fontSize: 22, marginBottom: 16 },
 
-    row: { flexDirection: 'row', alignItems: 'center'},
+    row: { flexDirection: 'row', alignItems: 'center' },
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 16,
+        backgroundColor: "#dda4a4ff"
+    },
 })

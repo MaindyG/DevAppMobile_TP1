@@ -7,23 +7,28 @@ export default function HomeScreen({ navigation }) {
     const {user} = useContext(CurrentUserContext);
     return(
         <View style={styles.container}>
-            <Text style={styles.title}>Bonjour {user} !</Text>
-            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Details')}>
-                <Text style={styles.text}>Aller aux Détails</Text>
+            <Text style={styles.title}>Bonjour {user} !</Text>    
+            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Info-Person')}>
+                <Text style={styles.text}> Contacts </Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Profil')}>
+                <Text style={styles.text}> Profil </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Settings')}>
+                <Text style={styles.text}> Paramètres </Text>
+            </TouchableOpacity>
+            
+            
             <View style={{ height: 12 }}/>
-            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Counter')}>
-                <Text style={styles.text}>Voir le Compteur</Text>
-            </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, alignItems: 'center', justifyContent: 'center'},
-    title: {fontSize: 22, fontWeight: 600},
+    container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:"#dda4a4ff"},
+    title: {fontSize: 35, fontWeight: 600, color:"#fff"},
     btn: {
-    backgroundColor: "pink",
+    backgroundColor: "#dc6375ff",
     color: "white",
     borderRadius: 50,
     marginTop: 50,
@@ -35,12 +40,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginTop: 50,
     padding: 10,
-    backgroundColor: "#FFB6C1",
+    backgroundColor: "#dc6375ff",
     width: 200,
-    height: 50
+    height: 50,
+    color:"#fff"
   },
   text: {
     textAlign: "center",
-    marginTop: 5
+    marginTop: 5,
+    fontSize:17,
+    color:"#fff"
   }
 })
