@@ -1,6 +1,5 @@
 import * as ScreenOrientation from 'expo-screen-orientation';
 
-
 export async function changeScreenOrientation(lockOrientation) {
     if (!lockOrientation) {
         console.log("unlockOrientation");
@@ -9,8 +8,9 @@ export async function changeScreenOrientation(lockOrientation) {
     }
     else {
         console.log("lockOrientation");
-        await ScreenOrientation.unlockAsync();
         await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+        ScreenOrientation.PlatformOrientationInfo.screenOrientationArrayIOS =  [ScreenOrientation.OrientationLock.PORTRAIT]
+        await ScreenOrientation.lockPlatformAsync(ScreenOrientation.PlatformOrientationInfo);
     }
 }
 
