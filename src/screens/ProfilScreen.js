@@ -172,14 +172,12 @@ export default function ProfilScreen() {
           <Text style={styles.buttonText}>💾 Sauvegarder</Text>
         </TouchableOpacity>
       </View>
-
       <TouchableOpacity 
-            style={{backgroundColor : colors.secondary, width: 200, marginLeft: 120, marginTop: 50, padding: 15, borderRadius: 50}}
+            style={{backgroundColor : colors.secondary, alignSelf: 'center', width: 200, marginTop: 50,  padding: 15, borderRadius: 50}}
             onPress={() => navigation.navigate("ProfilDetails")}
             >
         <Text style={{textAlign: 'center'}}>Plus d'infos</Text>
       </TouchableOpacity>
-
       <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
         <Text style={styles.logoutText}>Déconnexion</Text>
       </TouchableOpacity>
