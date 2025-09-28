@@ -1,62 +1,81 @@
-
-import React, {useContext, useEffect, useState} from 'react';
-import { View, Text, Switch, StyleSheet,Button,Alert } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, Switch, StyleSheet, Button, Alert, TouchableOpacity } from 'react-native';
 import { CurrentUserContext } from '../context/CurrentUserContext';
 import { ThemeContext } from '../context/ThemeContext';
+import { changeScreenOrientation } from '../hooks/orientation';
+import { lightTheme, darkTheme } from '../assets/colorPalette';
 
-import {changeScreenOrientation} from '../hooks/orientation';
+export default function SettingsScreen({ navigation }) {
+  const [lock, toggleLock] = useState(true);
 
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
 
+  const colors = theme === 'light' ? lightTheme : darkTheme;
 
-export default function SettingsScreen({navigation}) {
-
-    const [lock, toggleLock] = useState(true)
-
-
-
-    const { theme, toggleTheme } = useContext(ThemeContext);
-    const { setCurrentUser } = useContext(CurrentUserContext);
-    const handleLogout = () => {Alert.alert('Déconnexion', 'Vous êtes sur le point de vous deconnecter', [
+  const handleLogout = () => {
+    Alert.alert('Déconnexion', 'Vous êtes sur le point de vous déconnecter', [
       {
         text: 'Confirmer',
         onPress: () => setCurrentUser(null),
-        style: '',
+        style: 'destructive',
       },
-      {text: 'Annuler', onPress: () => console.log('Deconnexion annulée')},
+      { text: 'Annuler', onPress: () => console.log('Déconnexion annulée') },
     ]);
-    }
+  };
 
-    const toggleLockAndOrientation = () => {
-        toggleLock(previous => !previous);
-        changeScreenOrientation(!lock);
-    }
+  const toggleLockAndOrientation = () => {
+    toggleLock(previous => !previous);
+    changeScreenOrientation(!lock);
+  };
 
-    return(
-        <View style={[styles.container, theme === 'dark' ? styles.dark : styles.light]}>
-            <Text style={styles.title}></Text>
+  return (
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.title, { color: colors.text }]}>Paramètres</Text>
 
-            <View style={styles.row}>
-                <Text>Bloquer Portrait mode</Text>
-                <Switch onValueChange={toggleLockAndOrientation} value={lock} />
+      <View style={styles.row}>
+        <Text style={{ color: colors.text }}>Bloquer Portrait mode</Text>
+        <Switch onValueChange={toggleLockAndOrientation} value={lock} />
+      </View>
 
-            </View>
+      <View style={styles.row}>
+        <Text style={{ color: colors.text }}>Mode Sombre</Text>
+        <Switch value={theme === 'dark'} onValueChange={toggleTheme} />
 
-            <View>
-                <Text>Mode Sombre</Text>
-                <Switch value={theme === 'dark'} onValueChange={toggleTheme}/>
-                <Button title="Déconnexion" color="#ff0000ff" style={styles.logOutButton} onPress={handleLogout} />
-
-            </View>
-
-        </View>
-    )
+      </View>
+        <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
+                <Text style={styles.logoutText}>Déconnexion</Text>
+        </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 16 }, 
-    row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }, 
-    light: { backgroundColor: '#ffffff' },
-    dark: { backgroundColor: '#111111' }, 
-
-  
-})
+  container: { flex: 1, padding: 16 },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 10,
+    marginTop: 20
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: '600',
+    marginBottom: 20,
+  },
+  logoutBtn: {
+      backgroundColor: "#ff0000",
+      borderRadius: 50,
+      marginTop: 40,
+      marginBottom: 30,
+      padding: 10,
+      width: 200,
+      alignSelf: "center",
+    },
+  logoutText: {
+      textAlign: "center",
+      fontSize: 20,
+      color: "#fff",
+    },
+});

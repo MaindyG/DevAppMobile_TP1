@@ -1,35 +1,72 @@
-
 export const TestData = {
-
-    "admin" : {
+    "admin": {
         "password": "admin",
         "profilePicturePath": require('../assets/images/image6.gif'),
         "userType": 1,
-        "name": "admin"
+        "name": "admin",
+        "username": "admin_master",
+        "email": "admin@example.com",
+        "dayOfBirth": "1985-01-01",
+        "bio": "Administrateur principal du système",
+        "location": "Montréal, Canada",
+        "phone": "+1-514-123-4567",
+        "joinedDate": "2020-01-15",
+        "lastLogin": "2025-09-25",
     },
-    "johnatan" : {
+    "johnatan": {
         "password": "joestar",
         "profilePicturePath": require('../assets/images/image7.jpg'),
         "userType": 0,
-        "name": "johnatan"
+        "name": "johnatan",
+        "username": "jojo",
+        "email": "johnatan.joestar@example.com",
+        "dayOfBirth": "1990-03-15",
+        "bio": "Explorateur et amateur de mangas",
+        "location": "Toronto, Canada",
+        "phone": "+1-416-789-1122",
+        "joinedDate": "2023-06-12",
+        "lastLogin": "2025-09-20",
     },
-    "lara" : {
+    "lara": {
         "password": "croft",
         "profilePicturePath": require('../assets/images/image8.jpg'),
         "userType": 0,
-        "name": "lara"
+        "name": "lara",
+        "username": "lara_c",
+        "email": "lara.croft@example.com",
+        "dayOfBirth": "1995-07-10",
+        "bio": "Archéologue passionnée d’aventure",
+        "location": "Vancouver, Canada",
+        "phone": "+1-604-555-9876",
+        "joinedDate": "2021-03-08",
+        "lastLogin": "2025-09-23",
     },
-    "labubu" : {
+    "labubu": {
         "password": "ISWEARTOGODDONOTLOGININTOTHISACCOUNT",
         "profilePicturePath": require('../assets/images/image5.png'),
         "userType": 666,
-        "name": "labubu"
+        "name": "labubu",
+        "username": "labubu666",
+        "email": "labubu@example.com",
+        "dayOfBirth": "2000-12-31",
+        "bio": "Entité mystérieuse…",
+        "location": "Unknown",
+        "phone": null,
+        "joinedDate": "2025-01-01",
+        "lastLogin": "2025-09-26",
     },
-    "mina" : {
+    "mina": {
         "password": "unvraimotdepasse123",
         "profilePicturePath": require('../assets/images/image1.jpg'),
         "userType": 0,
-        "name": "mina"
-    },
-
+        "name": "mina",
+        "username": "mina_chan",
+        "email": "mina@example.com",
+        "dayOfBirth": "2002-05-20",
+        "bio": "Étudiante en informatique",
+        "location": "Québec, Canada",
+        "phone": "+1-418-222-3344",
+        "joinedDate": "2024-02-10",
+        "lastLogin": "2025-09-22",
+    }
 }
